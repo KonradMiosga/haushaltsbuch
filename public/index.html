@@ -1,21 +1,78 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>Dokumenttitel</title> 
+</head> 
 
-<head>
-    <meta charset="UTF-8">
-    <title>Deine Armut kotzt mich an</title>
-</head>
 
-<body>
+<body> 
+    <div class="content">
 
-    <h1>Hier sind deine miesen Kröten</h1>
 
-    <p>
-    <h2>Startseite</h2>
-    Willkommen<br /><br />
-    </p>
-    <h2>test2</h2>
+        <div class="text-center bg-light">
+            <h1 class="text-center">MHB - Mein Haushaltsbuch</h1>
+        </div>
 
-</body>
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav flex-lg-row flex-column">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div class="d-flex justify-content-end p-2">
+            <button class="btn btn-secondary mx-1">Einnahmen</button>
+            <button class="btn btn-secondary mx-1">Ausgaben</button>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-body">
+                        <h5 class="card-title">Einnahmen</h5>
+                        <p class="card-text">Details zu den Einnahmen.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-body">
+                        <h5 class="card-title">Ausgaben</h5>
+                        <p class="card-text">Details zu den Ausgaben.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-body">
+                        <h5 class="card-title">MonatsSaldo</h5>
+                        <p class="card-text">Details zum MonatsSaldo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+    <footer>
+        <p>Impressum</p>
+    </footer>
+
+
+</body> 
 </html>
