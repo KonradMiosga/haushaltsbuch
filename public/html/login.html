@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>Haushaltsbuch</title>
+</head>
+
+<body>
+    <div class="content">
+
+
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: #FFF865">My Budget Planer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add.html">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container p-4">
+            <div class="card card-body p-2">
+                <p class="h4 px-3 py-2">Login:</p>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="email" id="loginName" class="form-control" />
+                    <label class="form-label" for="loginName">Email</label>
+                </div>
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="password" id="loginPassword" class="form-control" />
+                    <label class="form-label" for="loginPassword">Password</label>
+                </div>
+                <!-- Submit button -->
+                <div class="d-flex justify-content-between px-3 py-2">
+                    <span>
+                        Kein Account? jetzt
+                        <a href="register.html">Registrieren</a>
+                    </span>
+                    <span class="ms-auto">
+                        <button id="loginsubmit" class="btn btn-primary">Login</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="text-center bg-dark">
+        <small>Impressum: MioWit GmbH, Brückenstraße 1, 02826 Görlitz, E-Mail: mio_wit_gmbh@blub.xx, Tel.: 0176
+            1234567</small>
+    </footer>
+
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#loginsubmit").click(function () {
+            var login = {
+                email: $("#loginName").val(),
+                password: $("#loginPassword").val()
+            };
+            console.log(login);
+            $.ajax({
+                url: 'http://localhost:8080/api/auth',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(login),
+                processData: false,
+                contentType: "application/json; charset=UTF-8",
+                success: function (data) {
+                    console.log(data);
+                    localStorage.setItem('myToken', data.token);
+                    window.location.href = 'index.html';
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error: ' + xhr.status + '   ' + thrownError);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

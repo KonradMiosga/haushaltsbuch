@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>Haushaltsbuch</title>
+</head>
+
+<body>
+    <div class="content">
+
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: #FFF865">My Budget Planer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add.html">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container p-4">
+            <div class="card card-body p-2">
+                <p class="h4 px-3 py-2">Registrieren:</p>
+                <!-- Name input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="text" id="registerVorname" class="form-control" />
+                    <label class="form-label" for="registerName">Vorname</label>
+                </div>
+                <!-- Username input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="text" id="registerNachname" class="form-control" />
+                    <label class="form-label" for="registerNachname">Nachname</label>
+                </div>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="email" id="registerEmail" class="form-control" />
+                    <label class="form-label" for="registerEmail">Email</label>
+                </div>
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="password" id="registerPassword" class="form-control" />
+                    <label class="form-label" for="registerPassword">Password</label>
+                </div>
+                <!-- Repeat Password input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="password" id="registerRepeatPassword" class="form-control" />
+                    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                </div>
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                        aria-describedby="registerCheckHelpText" />
+                    <label class="form-check-label" for="registerCheck">
+                        Ich akzeptiere die <a href="agreement.html">Nutzungsbedingungen</a>
+                    </label>
+                </div>
+                <!-- Submit button -->
+                <div class="justify-content-center d-flex m-2">
+                    <button id="registersubmit" type="submit" class="btn btn-primary">Registrieren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center bg-dark">
+        <small>Impressum: MioWit GmbH, Brückenstraße 1, 02826 Görlitz, E-Mail: mio_wit_gmbh@blub.xx, Tel.: 0176
+            1234567</small>
+    </footer>
+
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#registersubmit").click(function (event) {
+            event.preventDefault();
+            var password = $("#registerPassword").val();
+            var repeatPassword = $("#registerRepeatPassword").val();
+            var checkbox = $("#registerCheck").is(":checked");
+            if (password !== repeatPassword) {
+                alert("Die Passwörter stimmen nicht überein.");
+                return;
+            }
+            if (!checkbox) {
+                alert("Bitte stimmen Sie den Bedingungen zu.");
+                return;
+            }
+            var NewUser = {
+                email: $("#registerEmail").val(),
+                password: password,
+                firstName: $("#registerVorname").val(),
+                lastName: $("#registerNachname").val()
+            };
+            console.log(NewUser);
+            $.ajax({
+                url: 'http://localhost:8080/api/users',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(NewUser),
+                processData: false,
+                contentType: "application/json; charset=UTF-8",
+                success: function (data) {
+                    console.log(data);
+                    alert('Registrierung erfolgreich, sie können sich jetzt einloggen.');
+                    window.location.href = 'login.html';
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error: ' + xhr.status + '   ' + thrownError);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

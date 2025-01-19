@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>Haushaltsbuch - Add/Del Entry</title>
+</head>
+
+<body>
+    <div class="content">
+
+
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: #FFF865">My Budget Planer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add.html">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container p-4">
+            <div class="card card-body p-2">
+                <p class="h4 p-1">Eintrag erstellen:</p>
+                <div class="form-outline p-1">
+                    <input type="text" id="name" class="form-control" required />
+                    <label class="form-label" for="name">Bezeichnung</label>
+                </div>
+                <div class="form-outline px-1">
+                    <input type="number" step="0.01" id="amount" class="form-control" required />
+                    <label class="form-label" for="amount">Betrag</label>
+                </div>
+                <div class="form-outline p-1">
+                    <select class="form-select" id="type" required>
+                        <option value="" disabled selected>Wählen Sie den Typ</option>
+                        <option value="Einnahme">Einnahme</option>
+                        <option value="Ausgabe">Ausgabe</option>
+                    </select>
+                </div>
+                <div class="form-outline p-1">
+                    <select class="form-select" id="category" required>
+                        <option value="" disabled selected>Wählen Sie die Kategorie</option>
+                        <!-- Ausgaben Kategorien -->
+                        <option value="Wohnung">Wohnung</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Lebensmittel">Lebensmittel</option>
+                        <option value="Versicherung">Versicherung</option>
+                        <option value="Freizeit">Freizeit</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                        <!-- Einnahmen Kategorien -->
+                        <option value="Gehalt">Gehalt</option>
+                        <option value="Zinsen">Zinsen</option>
+                        <option value="Nebenjob">Nebenjob</option>
+                    </select>
+                </div>
+                <div class="form-outline p-1">
+                    <textarea id="description" class="form-control"></textarea>
+                    <label class="form-label" for="description">Beschreibung (optional)</label>
+                </div>
+                <div class="justify-content-center d-flex m-2">
+                    <button id="addEntry" class="btn btn-primary">Hinzufügen</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container px-4">
+            <div class="card card-body p-2">
+                <p class="h4 p-1">Eintrag entfernen:</p>
+                <div class="form-outline p-1">
+                    <select class="form-select" id="delselection" required>
+                    </select>
+                </div>
+                <div class="justify-content-center d-flex m-2">
+                    <button id="deleteEntry" class="btn btn-primary">Entfernen</button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer class="text-center bg-dark">
+        <small>Impressum: MioWit GmbH, Brückenstraße 1, 02826 Görlitz, E-Mail: mio_wit_gmbh@blub.xx, Tel.: 0176
+            1234567</small>
+    </footer>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/add.js"></script>
+</body>
+</html>
