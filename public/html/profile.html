@@ -11,7 +11,6 @@
 <body> 
     <div class="content">
 
-
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" style="color: #FFF865">My Budget Planer</a>
@@ -24,34 +23,80 @@
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="add.html">Add</a>
+                            <a class="nav-link" href="add.html">Add/Del</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="profile.html">Profil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.html">Login</a>
+                            <a class="nav-link active" href="profile.html">Profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="apis.html">APIs</a>
                         </li>
                     </ul>
               </div>
             </div>
         </nav>
 
+        <div id="logindiv" class="container p-4">
+            <div class="card card-body p-2">
+                <p class="h4 px-3 py-2">Login:</p>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="email" id="loginName" class="form-control" />
+                    <label class="form-label" for="loginName">Email</label>
+                </div>
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="password" id="loginPassword" class="form-control" />
+                    <label class="form-label" for="loginPassword">Password</label>
+                </div>
+                <!-- Submit button -->
+                <div class="d-flex justify-content-between px-3 py-2">
+                    <span>
+                        Kein Account? jetzt
+                        <a href="register.html">Registrieren</a>
+                    </span>
+                    <span class="ms-auto">
+                        <button id="loginsubmit" class="btn btn-primary">Login</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="profilediv" class="container p-4">
+            <div class="card card-body p-2">
+                <p class="h4 px-3 py-2">Profil:</p>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="email" id="loginName" class="form-control" />
+                    <label class="form-label" for="loginName">Email</label>
+                </div>
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="password" id="loginPassword" class="form-control" />
+                    <label class="form-label" for="loginPassword">Password</label>
+                </div>
+                <!-- Submit button -->
+                <div class="d-flex justify-content-between px-3 py-2">
+                    <span class="ms-auto">
+                        <button id="savesubmit" class="btn btn-primary">Speichern</button>
+                        <button id="logoutsubmit" class="btn btn-primary">Logout</button>
+                    </span>
+                </div>
+            </div>
+        </div>
 
     </div>
-
 
     <footer class="text-center bg-dark">
         <small>Impressum: MioWit GmbH, Brückenstraße 1, 02826 Görlitz, E-Mail: mio_wit_gmbh@blub.xx, Tel.: 0176 1234567</small> 
     </footer>
-   
 
-    <script  src="../js/jquery-3.6.0.min.js"></script>
-    <script  src="../js/bootstrap.bundle.min.js"></script>
-
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/profile.js"></script>
     
 </body> 
 </html>
