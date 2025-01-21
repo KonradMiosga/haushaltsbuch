@@ -50,17 +50,16 @@
             </div>
         </nav>
 
-
         <div class="container p-4">
             <div class="card card-body p-2">
-                <p class="h4 p-1">Eintrag erstellen:</p>
+                <p class="h4 p-1 text-center">Eintrag erstellen</p>
                 <div class="form-outline p-1">
+                    <label class="form-label" for="name">Bezeichnung:</label>
                     <input type="text" id="name" class="form-control" required />
-                    <label class="form-label" for="name">Bezeichnung</label>
                 </div>
                 <div class="form-outline px-1">
+                    <label class="form-label" for="amount">Betrag:</label>
                     <input type="number" step="0.01" id="amount" class="form-control" required />
-                    <label class="form-label" for="amount">Betrag</label>
                 </div>
                 <div class="form-outline p-1">
                     <select class="form-select" id="type" required>
@@ -104,8 +103,8 @@
                     </select>
                 </div>
                 <div class="form-outline p-1">
+                    <label class="form-label" for="description">Beschreibung (optional):</label>
                     <textarea id="description" class="form-control"></textarea>
-                    <label class="form-label" for="description">Beschreibung (optional)</label>
                 </div>
                 <div class="justify-content-center d-flex m-2">
                     <button id="addEntry" class="btn btn-primary" disabled>Hinzufügen</button>
@@ -115,7 +114,7 @@
 
         <div class="container px-4">
             <div class="card card-body p-2">
-                <p class="h4 p-1">Eintrag entfernen:</p>
+                <p class="h4 p-1 text-center">Eintrag entfernen</p>
                 <div class="form-outline p-1">
                     <select class="form-select" id="delselection" required>
                     </select>
@@ -137,7 +136,7 @@
 
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/add.js"></script>
+    <script type="module" src="../js/add.js"></script>
 </body>
 
 </html>

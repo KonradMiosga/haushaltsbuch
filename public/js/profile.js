@@ -1,3 +1,4 @@
+import config from './config.js';
 $(document).ready(function () {
     var token = localStorage.getItem('myToken');
     if (token) {
@@ -22,7 +23,7 @@ $("#loginsubmit").click(function () {
     };
     console.log(login);
     $.ajax({
-        url: 'http://localhost:8080/api/auth',
+        url: config.apiUrl + '/auth',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -47,7 +48,7 @@ $("#logoutsubmit").click(function () {
     var token = localStorage.getItem('myToken');
     if (!token) return;
     $.ajax({
-        url: 'http://localhost:8080/api/auth?token=' + token,
+        url: config.apiUrl + '/auth?token=' + token,
         type: 'DELETE',
         dataType: 'json',
         success: function (data) {
@@ -78,7 +79,7 @@ $("#savesubmit").click(function () {
         }
     };
     $.ajax({
-        url: 'http://localhost:8080/api/users',
+        url: config.apiUrl + '/api/users',
         type: 'put',
         dataType: 'json',
         contentType: 'application/json',
@@ -99,7 +100,7 @@ function refresh() {
     var token = localStorage.getItem('myToken');
     if (!token) return;
     $.ajax({
-        url: 'http://localhost:8080/api/users?token=' + token,
+        url: config.apiUrl + '/users?token=' + token,
         type: 'GET',
         dataType: 'json',
         success: function (data) {

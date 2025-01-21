@@ -1,3 +1,5 @@
+import config from './config.js';
+
 $(document).ready(function () {
     var token = localStorage.getItem('myToken');
     if (!token) {
@@ -18,7 +20,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-        url: 'http://localhost:8080/api/entries?token=' + token,
+        url: config.apiUrl + '/entries?token=' + token,
         type: 'GET',
         dataType: 'json',
         success: function (data) {

@@ -98,49 +98,9 @@
             1234567</small>
     </footer>
 
-
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script>
-        $("#registersubmit").click(function (event) {
-            event.preventDefault();
-            var password = $("#registerPassword").val();
-            var repeatPassword = $("#registerRepeatPassword").val();
-            var checkbox = $("#registerCheck").is(":checked");
-            if (password !== repeatPassword) {
-                alert("Die Passwörter stimmen nicht überein.");
-                return;
-            }
-            if (!checkbox) {
-                alert("Bitte stimmen Sie den Bedingungen zu.");
-                return;
-            }
-            var NewUser = {
-                email: $("#registerEmail").val(),
-                password: password,
-                firstName: $("#registerVorname").val(),
-                lastName: $("#registerNachname").val()
-            };
-            console.log(NewUser);
-            $.ajax({
-                url: 'http://localhost:8080/api/users',
-                type: 'post',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify(NewUser),
-                processData: false,
-                contentType: "application/json; charset=UTF-8",
-                success: function (data) {
-                    console.log(data);
-                    alert('Registrierung erfolgreich, sie können sich jetzt einloggen.');
-                    window.location.href = 'profile.html';
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert('Error: ' + xhr.status + '   ' + thrownError);
-                }
-            });
-        });
-    </script>
+    <script type="module" src="../js/register.js"></script>
 
 </body>
 

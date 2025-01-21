@@ -1,3 +1,4 @@
+import config from './config.js';
 // $(document).ready(function () {                              // jQuery-Code wird ausgeführt, wenn das Dokument vollständig geladen ist
 document.addEventListener('DOMContentLoaded', function() {      // Vanilla JavaScript-Code wird ausgeführt, wenn das Dokument vollständig geladen ist
     const typeSelect = document.getElementById('type');
@@ -64,7 +65,7 @@ function refresh(){
         return;
     }
     $.ajax({
-        url: 'http://localhost:8080/api/entries?token=' + token,
+        url: config.apiUrl + '/entries?token=' + token,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -95,7 +96,7 @@ $("#deleteEntry").click(function () {
     };
     console.log(tokenName);
     $.ajax({
-        url: 'http://localhost:8080/api/entries',
+        url: config.apiUrl + '/entries',
         type: 'delete',
         dataType: 'json',
         contentType: 'application/json',
@@ -127,7 +128,7 @@ $("#addEntry").click(function () {
     };
     console.log(tokenEntry);
     $.ajax({
-        url: 'http://localhost:8080/api/entries',
+        url: config.apiUrl + '/entries',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
