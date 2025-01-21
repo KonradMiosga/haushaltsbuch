@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
     <link href="../css/styles.css" rel="stylesheet">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <title>Haushaltsbuch - Add/Del Entry</title>
@@ -38,6 +39,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="apis.html">APIs</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="infos.html">Infos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sp.html">SP</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -63,19 +70,37 @@
                     </select>
                 </div>
                 <div class="form-outline p-1">
-                    <select class="form-select" id="category" required>
+                    <select class="form-select" id="category" required disabled>
                         <option value="" disabled selected>Wählen Sie die Kategorie</option>
-                        <!-- Ausgaben Kategorien -->
-                        <option value="Wohnung">Wohnung</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Lebensmittel">Lebensmittel</option>
-                        <option value="Versicherung">Versicherung</option>
-                        <option value="Freizeit">Freizeit</option>
-                        <option value="Sonstiges">Sonstiges</option>
-                        <!-- Einnahmen Kategorien -->
-                        <option value="Gehalt">Gehalt</option>
-                        <option value="Zinsen">Zinsen</option>
-                        <option value="Nebenjob">Nebenjob</option>
+                        <optgroup label="Ausgaben" id="expenseCategories">
+                            <option value="Wohnen">Wohnen</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Lebensmittel">Lebensmittel</option>
+                            <option value="Versicherung">Versicherung</option>
+                            <option value="Freizeit">Freizeit</option>
+                            <option value="Sonstiges">Sonstiges</option>
+                            <option value="Gesundheit">Gesundheit</option>
+                            <option value="Bildung">Bildung</option>
+                            <option value="Kredite/Schulden">Kredite/Schulden</option>
+                            <option value="Steuern">Steuern</option>
+                            <option value="Haushaltsgeräte">Haushaltsgeräte</option>
+                            <option value="Kinderbetreuung">Kinderbetreuung</option>
+                            <option value="Geschenke/Spenden">Geschenke/Spenden</option>
+                            <option value="Tierhaltung">Tierhaltung</option>
+                        </optgroup>
+                        <optgroup label="Einnahmen" id="incomeCategories">
+                            <option value="Gehalt">Gehalt</option>
+                            <option value="Zinsen">Zinsen</option>
+                            <option value="Nebenjob">Nebenjob</option>
+                            <option value="Mieteinnahmen">Mieteinnahmen</option>
+                            <option value="Rente/Pension">Rente/Pension</option>
+                            <option value="Unterstützung">Unterstützung</option>
+                            <option value="Bonuszahlungen">Bonuszahlungen</option>
+                            <option value="Gewinnbeteiligung">Gewinnbeteiligung</option>
+                            <option value="Investitionen">Investitionen</option>
+                            <option value="Verkauf von Eigentum">Verkauf von Eigentum</option>
+                            <option value="Bildungsförderung">Stipendien/Bildungsförderung</option>
+                        </optgroup>
                     </select>
                 </div>
                 <div class="form-outline p-1">
@@ -83,7 +108,7 @@
                     <label class="form-label" for="description">Beschreibung (optional)</label>
                 </div>
                 <div class="justify-content-center d-flex m-2">
-                    <button id="addEntry" class="btn btn-primary">Hinzufügen</button>
+                    <button id="addEntry" class="btn btn-primary" disabled>Hinzufügen</button>
                 </div>
             </div>
         </div>
@@ -96,7 +121,7 @@
                     </select>
                 </div>
                 <div class="justify-content-center d-flex m-2">
-                    <button id="deleteEntry" class="btn btn-primary">Entfernen</button>
+                    <button id="deleteEntry" class="btn btn-primary" disabled>Entfernen</button>
                 </div>
             </div>
         </div>
@@ -114,4 +139,5 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/add.js"></script>
 </body>
+
 </html>

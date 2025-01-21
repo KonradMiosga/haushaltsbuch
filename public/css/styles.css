@@ -26,3 +26,17 @@ footer {
     height: 10vw;
     object-fit: cover;
 }
+.responsive-video {
+    position: relative;
+    width: 100%; /* Passt sich der Containerbreite an */
+    padding-bottom: 56.25%; /* 16:9-Verhältnis */
+    height: 0;
+    overflow: hidden;
+}
+.responsive-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

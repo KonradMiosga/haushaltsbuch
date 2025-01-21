@@ -1,4 +1,59 @@
-$(document).ready(function () {
+// $(document).ready(function () {                              // jQuery-Code wird ausgeführt, wenn das Dokument vollständig geladen ist
+document.addEventListener('DOMContentLoaded', function() {      // Vanilla JavaScript-Code wird ausgeführt, wenn das Dokument vollständig geladen ist
+    const typeSelect = document.getElementById('type');
+    const categorySelect = document.getElementById('category');
+    const expenseCategories = document.getElementById('expenseCategories');
+    const incomeCategories = document.getElementById('incomeCategories');
+
+    // Hide all categories initially
+    expenseCategories.style.display = 'none';
+    incomeCategories.style.display = 'none';
+
+    typeSelect.addEventListener('change', function() {
+        // Enable category select
+        categorySelect.disabled = false;
+        
+        // Reset category selection
+        categorySelect.value = '';
+
+        // Show/hide relevant categories based on type
+        if (this.value === 'Ausgabe') {
+            expenseCategories.style.display = '';
+            incomeCategories.style.display = 'none';
+        } else if (this.value === 'Einnahme') {
+            expenseCategories.style.display = 'none';
+            incomeCategories.style.display = '';
+        }
+    });
+
+    // Initial buttons deaktivieren
+    const addButton = document.getElementById('addEntry');
+    const deleteButton = document.getElementById('deleteEntry');
+    addButton.disabled = true;
+    deleteButton.disabled = true;
+
+    // Überwachung der Auswahl für "Entfernen"
+    const delSelection = document.getElementById('delselection');
+    delSelection.addEventListener('change', function() {
+        deleteButton.disabled = !delSelection.value;
+    });
+
+    // Überwachung der Eingabefelder für "Hinzufügen"
+    const nameInput = document.getElementById('name');
+    const amountInput = document.getElementById('amount');
+    const descriptionInput = document.getElementById('description');
+
+    [nameInput, amountInput, typeSelect, categorySelect].forEach(element => {
+        element.addEventListener('change', validateAddForm);
+        element.addEventListener('input', validateAddForm);
+    });
+    function validateAddForm() {
+        const isValid = nameInput.value.trim() !== '' && 
+                       amountInput.value.trim() !== '' && 
+                       typeSelect.value !== '' && 
+                       categorySelect.value !== '';
+        addButton.disabled = !isValid;
+    }
     refresh();
 });
 
@@ -56,8 +111,6 @@ $("#deleteEntry").click(function () {
         }
     });
 });
-
-
 
 $("#addEntry").click(function () {
     var my_token = localStorage.getItem('myToken');

@@ -3,6 +3,7 @@
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
     <link href="../css/styles.css" rel="stylesheet">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <title>Haushaltsbuch</title> 
@@ -33,6 +34,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="apis.html">APIs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="infos.html">Infos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sp.html">SP</a>
                         </li>
                     </ul>
               </div>
@@ -70,13 +77,23 @@
                 <p class="h4 px-3 py-2">Profil:</p>
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline px-3">
-                    <input type="email" id="loginName" class="form-control" />
-                    <label class="form-label" for="loginName">Email</label>
+                    <input type="email" id="userName" class="form-control" />
+                    <label class="form-label" for="userName">Email</label>
                 </div>
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline px-3">
-                    <input type="password" id="loginPassword" class="form-control" />
-                    <label class="form-label" for="loginPassword">Password</label>
+                    <input type="password" id="userPassword" class="form-control" />
+                    <label class="form-label" for="userPassword">Password</label>
+                </div>
+                <!-- Firstname input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="text" id="userFirstname" class="form-control" />
+                    <label class="form-label" for="userFirstname">Vorname</label>
+                </div>
+                <!-- Lastname input -->
+                <div data-mdb-input-init class="form-outline px-3">
+                    <input type="text" id="userLastname" class="form-control" />
+                    <label class="form-label" for="userLastname">Nachname</label>
                 </div>
                 <!-- Submit button -->
                 <div class="d-flex justify-content-between px-3 py-2">
