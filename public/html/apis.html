@@ -10,7 +10,7 @@
     <title>Haushaltsbuch</title>
 </head>
 
-<body>
+<body id="earthimg">
     <div class="content">
 
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -50,29 +50,50 @@
         </nav>
 
         <div class="container p-4">
+            <div class="card card-body p-3">
+                <h4 class="text-center">API und Graphql</h1>
+                    <p>Hier kommt die Nachricht von unserem GraphQL-Server.
+                        Der Server mixt für uns die Chuck Norris API (ja, genau der Chuck Norris!) mit einer
+                        Übersetzungs-API. Das Ergebnis? Unterhaltung auf mehreren Sprachen – weil Chuck Norris-Witze
+                        einfach universell sind 🌍🤣. 
+
+                        Und das Beste: Das Ganze läuft mit nur einem einzigen POST. Effizienz-Level: Chuck Norris hätte
+                        es nicht besser hingekriegt.</p>
+                    <h4 class="">Orginal:</h1>
+                        <p id="chuckEn">test</p>
+                        <h4 class="">Deutsche Übersetzung:</h1>
+                            <p id="chuckDe">test</p>
+                            <h4 class="">Polnische Übersetzung:</h1>
+                                <p id="chuckPo">test</p>
+                                <h4 class="">Japanische Übersetzung:</h1>
+                                    <p id="chuckJp">test</p>
+            </div>
+        </div>
+
+        <div class="container p-4">
             <div class="row">
                 <div class="col-lg-4 mb-2">
                     <div class="card card-body p-2">
                         <img src="../img/einzahlung.jpg" class="card-img-top">
                         <div class="card-body">
-                          <h5 class="card-title">Börse</h5>
-                        </div>                                        
+
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-2">
                     <div class="card card-body p-2">
                         <img src="../img/auszahlung.jpg" class="card-img-top">
                         <div class="card-body">
-                          <h5 class="card-title">Nasa</h5>
+                            <h5 class="card-title">Nasa</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-2">
                     <div class="card card-body p-2">
-                        <img src="../img/ergebnis.jpg" class="card-img-top">
+                        <img src="../img/wetter.jpg" class="card-img-top">
                         <div class="card-body">
-                          <h5 class="card-title">Wetter</h5>
-                        </div> 
+                            <h5 class="card-title">Wetter</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,6 +108,8 @@
 
     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/apis.js"></script>
 
 </body>
+
 </html>

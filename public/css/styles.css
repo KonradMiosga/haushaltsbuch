@@ -5,6 +5,10 @@ body {
     background: url('../img/geldtopf.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+#earthimg {
+    background: url('../img/earth.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
 .content {
     flex: 1;
 }
