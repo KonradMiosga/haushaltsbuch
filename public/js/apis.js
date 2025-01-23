@@ -1,3 +1,5 @@
+import config from './config.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     chuck();
 });
@@ -7,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // die erste api ist die chuck norris api, die zweite api ist die google translate api
 function chuck() {
     $.ajax({
-        url: 'https://guarded-anchorage-34944-dcf8e00a5c64.herokuapp.com/graphql',
+        url: config.graphqlUrl,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -26,8 +28,6 @@ function chuck() {
         }
     });
 }
-
-
 
 /* chuck norris api + translation api ohne graphql
 function chuck() {

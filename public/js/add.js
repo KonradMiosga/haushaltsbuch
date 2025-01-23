@@ -1,23 +1,23 @@
 import config from './config.js';
-// $(document).ready(function () {                              // jQuery-Code wird ausgeführt, wenn das Dokument vollständig geladen ist
-document.addEventListener('DOMContentLoaded', function() {      // Vanilla JavaScript-Code wird ausgeführt, wenn das Dokument vollständig geladen ist
+
+// Event-Listener wird ausgeführt, wenn das DOM vollständig geladen ist
+document.addEventListener('DOMContentLoaded', function () {
+    // DOM-Elemente initialisieren
     const typeSelect = document.getElementById('type');
     const categorySelect = document.getElementById('category');
     const expenseCategories = document.getElementById('expenseCategories');
     const incomeCategories = document.getElementById('incomeCategories');
 
-    // Hide all categories initially
+    // Kategorien initial ausblenden
     expenseCategories.style.display = 'none';
     incomeCategories.style.display = 'none';
 
-    typeSelect.addEventListener('change', function() {
-        // Enable category select
-        categorySelect.disabled = false;
-        
-        // Reset category selection
-        categorySelect.value = '';
+    // Event-Handler für Typ-Auswahl
+    typeSelect.addEventListener('change', function () {
+        categorySelect.disabled = false;        // Kategorie-Auswahl aktivieren
+        categorySelect.value = '';             // Kategorie-Auswahl zurücksetzen
 
-        // Show/hide relevant categories based on type
+        // Kategorien basierend auf gewähltem Typ ein-/ausblenden
         if (this.value === 'Ausgabe') {
             expenseCategories.style.display = '';
             incomeCategories.style.display = 'none';
@@ -27,19 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {      // Vanilla JavaS
         }
     });
 
-    // Initial buttons deaktivieren
+    // Buttons initial deaktivieren
     const addButton = document.getElementById('addEntry');
     const deleteButton = document.getElementById('deleteEntry');
     addButton.disabled = true;
     deleteButton.disabled = true;
 
-    // Überwachung der Auswahl für "Entfernen"
+    // Event-Handler für Löschen-Auswahl
     const delSelection = document.getElementById('delselection');
-    delSelection.addEventListener('change', function() {
+    delSelection.addEventListener('change', function () {
         deleteButton.disabled = !delSelection.value;
     });
 
-    // Überwachung der Eingabefelder für "Hinzufügen"
+    // Formularvalidierung für Hinzufügen-Button
     const nameInput = document.getElementById('name');
     const amountInput = document.getElementById('amount');
     const descriptionInput = document.getElementById('description');
@@ -48,17 +48,22 @@ document.addEventListener('DOMContentLoaded', function() {      // Vanilla JavaS
         element.addEventListener('change', validateAddForm);
         element.addEventListener('input', validateAddForm);
     });
+
+    // Prüfen ob alle Pflichtfelder ausgefüllt sind
     function validateAddForm() {
-        const isValid = nameInput.value.trim() !== '' && 
-                       amountInput.value.trim() !== '' && 
-                       typeSelect.value !== '' && 
-                       categorySelect.value !== '';
+        const isValid = nameInput.value.trim() !== '' &&
+            amountInput.value.trim() !== '' &&
+            typeSelect.value !== '' &&
+            categorySelect.value !== '';
         addButton.disabled = !isValid;
     }
+
+    // Initial Einträge laden
     refresh();
 });
 
-function refresh(){
+// Lädt die Einträge für die Lösch-Auswahl
+function refresh() {
     var token = localStorage.getItem('myToken');
     if (!token) {
         $("#delselection").empty().html('<option value="" disabled selected>Eintrag auswählen</option>');
@@ -87,9 +92,10 @@ function refresh(){
     });
 }
 
+// Event-Handler für Löschen-Button
 $("#deleteEntry").click(function () {
     var my_token = localStorage.getItem('myToken');
-    if (!my_token)  return;
+    if (!my_token) return;
     var tokenName = {
         token: my_token,
         name: $("#delselection").val()
@@ -113,12 +119,13 @@ $("#deleteEntry").click(function () {
     });
 });
 
+// Event-Handler für Hinzufügen-Button
 $("#addEntry").click(function () {
     var my_token = localStorage.getItem('myToken');
-    if (!my_token)  return;
+    if (!my_token) return;
     var tokenEntry = {
         token: my_token,
-        entry : {
+        entry: {
             name: $("#name").val(),
             amount: parseFloat($("#amount").val()),
             type: $("#type").val(),

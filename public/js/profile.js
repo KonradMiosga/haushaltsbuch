@@ -1,13 +1,17 @@
 import config from './config.js';
+
+// Seiten-Initialisierung
 $(document).ready(function () {
     var token = localStorage.getItem('myToken');
     if (token) {
+        // Wenn Token vorhanden, Profil anzeigen
         const div1 = document.getElementById("logindiv");
         div1.classList.add("d-none");
         const div2 = document.getElementById("profilediv");
         div2.classList.remove("d-none");
         refresh();
     } else {
+        // Wenn kein Token vorhanden, Login anzeigen
         const div1 = document.getElementById("logindiv");
         div1.classList.remove("d-none");
         const div2 = document.getElementById("profilediv");
@@ -15,7 +19,7 @@ $(document).ready(function () {
     }
 });
 
-
+// Event-Handler für Login
 $("#loginsubmit").click(function () {
     var login = {
         email: $("#loginName").val(),
@@ -44,6 +48,7 @@ $("#loginsubmit").click(function () {
     });
 });
 
+// Event-Handler für Logout
 $("#logoutsubmit").click(function () {
     var token = localStorage.getItem('myToken');
     if (!token) return;
@@ -66,6 +71,7 @@ $("#logoutsubmit").click(function () {
     });
 });
 
+// Event-Handler für Profil speichern
 $("#savesubmit").click(function () {
     var my_token = localStorage.getItem('myToken');
     if (!my_token)  return;
@@ -96,15 +102,18 @@ $("#savesubmit").click(function () {
     });
 });
 
+// Lädt die Benutzerdaten vom Server
 function refresh() {
     var token = localStorage.getItem('myToken');
     if (!token) return;
+    // Benutzerdaten vom Server abrufen
     $.ajax({
         url: config.apiUrl + '/users?token=' + token,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
+            console.log("Empfangene Benutzerdaten:", data);
+            // Formularfelder mit Benutzerdaten befüllen
             $("#userName").val(data.email);           
             $("#userPassword").val(data.password);   
             $("#userFirstname").val(data.firstName);

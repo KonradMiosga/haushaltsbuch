@@ -1,5 +1,6 @@
 import config from './config.js';
 
+// Seiten-Initialisierung
 $(document).ready(function () {
     var token = localStorage.getItem('myToken');
     if (!token) {
@@ -19,6 +20,7 @@ $(document).ready(function () {
         return;
     }
 
+    // Einträge laden
     $.ajax({
         url: config.apiUrl + '/entries?token=' + token,
         type: 'GET',

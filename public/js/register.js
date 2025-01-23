@@ -1,4 +1,6 @@
 import config from './config.js';
+
+// POST-Request für Registrierung, Auslöser ist der Klick auf den Registrieren-Button
 $("#registersubmit").click(function (event) {
     event.preventDefault();
     var password = $("#registerPassword").val();
