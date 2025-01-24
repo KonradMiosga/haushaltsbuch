@@ -37,7 +37,11 @@ $("#loginsubmit").click(function () {
         success: function (data) {
             console.log(data);
             localStorage.setItem('myToken', data.token);
-            window.location.href = 'profile.html';
+            const div1 = document.getElementById("logindiv");
+            div1.classList.add("d-none");
+            const div2 = document.getElementById("profilediv");
+            div2.classList.remove("d-none");
+            refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '   ' + thrownError);
@@ -117,6 +121,11 @@ function refresh() {
             $("#userLastname").val(data.lastName);
         },
         error: function (xhr, ajaxOptions, thrownError) {
+            localStorage.removeItem('myToken');
+            const div1 = document.getElementById("logindiv");
+            div1.classList.remove("d-none");
+            const div2 = document.getElementById("profilediv");
+            div2.classList.add("d-none");
             console.log('Error: ' + xhr.status + ' ' + thrownError);
             alert('Error: ' + xhr.status + ' ' + thrownError);
         }
