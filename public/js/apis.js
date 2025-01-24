@@ -82,14 +82,14 @@ var longitude = null;
 //IP-Adresse holen
 function getIP() {
     $.ajax({
-        url: 'http://ip-api.com/json/',
+        url: 'https://apip.cc/json',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             ipaddress = data.query;
-            city = data.city;
-            latitude = data.lat;
-            longitude = data.lon;
+            city = data.City;
+            latitude = data.Latitude;
+            longitude = data.Longitude;
             console.log(data);
             $('#idForIp').html('IP-Adresse:  ' + ipaddress);
             $('#idForCity').html('Stadt:  ' + city);
