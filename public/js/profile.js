@@ -37,10 +37,7 @@ $("#loginsubmit").click(function () {
         success: function (data) {
             console.log(data);
             localStorage.setItem('myToken', data.token);
-            const div1 = document.getElementById("logindiv");
-            div1.classList.add("d-none");
-            const div2 = document.getElementById("profilediv");
-            div2.classList.remove("d-none");
+            window.location.href = 'profile.html';
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Error: ' + xhr.status + '   ' + thrownError);

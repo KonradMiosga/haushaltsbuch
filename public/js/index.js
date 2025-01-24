@@ -52,7 +52,7 @@ $(document).ready(function () {
         error: function (xhr, ajaxOptions, thrownError) {
             if (xhr.status === 401) {
                 localStorage.removeItem('myToken');
-                window.location.href = 'login.html';
+                window.location.href = 'profile.html';
                 return;
             }
             console.log('Error: ' + xhr.status + ' ' + thrownError);
