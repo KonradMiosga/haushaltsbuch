@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event-Handler für Löschen-Auswahl
     const delSelection = document.getElementById('delselection');
     delSelection.addEventListener('change', function () {
-        deleteButton.disabled = !delSelection.value;
+        deleteButton.disabled = !delSelection.value && localStorage.getItem('myToken') !== null;
     });
 
     // Formularvalidierung für Hinzufügen-Button
@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Prüfen ob alle Pflichtfelder ausgefüllt sind
     function validateAddForm() {
-        const isValid = nameInput.value.trim() !== '' &&
+        const isValid = 
+            localStorage.getItem('myToken') !== null &&
+            nameInput.value.trim() !== '' &&
             amountInput.value.trim() !== '' &&
             typeSelect.value !== '' &&
             categorySelect.value !== '';

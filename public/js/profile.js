@@ -3,21 +3,25 @@ import config from './config.js';
 // Seiten-Initialisierung
 $(document).ready(function () {
     var token = localStorage.getItem('myToken');
-    if (token) {
-        // Wenn Token vorhanden, Profil anzeigen
-        const div1 = document.getElementById("logindiv");
-        div1.classList.add("d-none");
-        const div2 = document.getElementById("profilediv");
-        div2.classList.remove("d-none");
-        refresh();
-    } else {
-        // Wenn kein Token vorhanden, Login anzeigen
-        const div1 = document.getElementById("logindiv");
-        div1.classList.remove("d-none");
-        const div2 = document.getElementById("profilediv");
-        div2.classList.add("d-none");
-    }
+    if (token) showProfile();
+    else showLogin();
 });
+
+function showProfile() {  
+    // Wenn Token vorhanden, Profil anzeigen
+    const div1 = document.getElementById("logindiv");
+    div1.classList.add("d-none");
+    const div2 = document.getElementById("profilediv");
+    div2.classList.remove("d-none");
+    refresh();
+}
+function showLogin() {  
+    // Wenn kein Token vorhanden, Login anzeigen
+    const div1 = document.getElementById("logindiv");
+    div1.classList.remove("d-none");
+    const div2 = document.getElementById("profilediv");
+    div2.classList.add("d-none");
+}
 
 // Event-Handler für Login
 $("#loginsubmit").click(function () {
@@ -37,14 +41,10 @@ $("#loginsubmit").click(function () {
         success: function (data) {
             console.log(data);
             localStorage.setItem('myToken', data.token);
-            const div1 = document.getElementById("logindiv");
-            div1.classList.add("d-none");
-            const div2 = document.getElementById("profilediv");
-            div2.classList.remove("d-none");
-            refresh();
+            showProfile();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '   ' + thrownError);
+            alert('Fehler bei der Anmeldung. Error: ' + xhr.status + '   ' + thrownError);
         }
     });
 });
@@ -59,15 +59,11 @@ $("#logoutsubmit").click(function () {
         dataType: 'json',
         success: function (data) {
             localStorage.removeItem('myToken');
-            const div1 = document.getElementById("logindiv");
-            div1.classList.remove("d-none");
-            const div2 = document.getElementById("profilediv");
-            div2.classList.add("d-none");
+            showLogin();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             console.log('Error: ' + xhr.status + ' ' + thrownError);
-            console.log('Response:', xhr.responseText);
-            alert('Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler bei der Abmeldung. Error: ' + xhr.status + ' ' + thrownError);
         }
     });
 });
@@ -98,7 +94,7 @@ $("#savesubmit").click(function () {
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '   ' + thrownError);
+            alert('Fehler beim Speichern. Error: ' + xhr.status + ' ' + thrownError);
         }
     });
 });
@@ -122,12 +118,9 @@ function refresh() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             localStorage.removeItem('myToken');
-            const div1 = document.getElementById("logindiv");
-            div1.classList.remove("d-none");
-            const div2 = document.getElementById("profilediv");
-            div2.classList.add("d-none");
+            showLogin();
             console.log('Error: ' + xhr.status + ' ' + thrownError);
-            alert('Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler beim Refresh der Daten. Error: ' + xhr.status + ' ' + thrownError);
         }
     });
 }
