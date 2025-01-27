@@ -25,6 +25,8 @@ function showLogin() {
 
 // Event-Handler für Login
 $("#loginsubmit").click(function () {
+    const loginButton = document.getElementById("loginsubmit");
+    loginButton.disabled = true;
     var login = {
         email: $("#loginName").val(),
         password: $("#loginPassword").val()
@@ -42,9 +44,11 @@ $("#loginsubmit").click(function () {
             console.log(data);
             localStorage.setItem('myToken', data.token);
             showProfile();
+            loginButton.disabled = false;
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Fehler bei der Anmeldung. Error: ' + xhr.status + '   ' + thrownError);
+            loginButton.disabled = false;
         }
     });
 });

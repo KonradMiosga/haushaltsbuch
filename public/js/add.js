@@ -1,5 +1,19 @@
 import config from './config.js';
 
+$(document).ready(function () {
+    var token = localStorage.getItem('myToken');
+    const span1 = document.getElementById("deleteEntryStatus");
+    const span2 = document.getElementById("addEntryStatus");
+    if (!token) {
+        span1.classList.remove("d-none");
+        span2.classList.remove("d-none");
+    }
+    else {
+        span1.classList.add("d-none");
+        span2.classList.add("d-none");
+    }
+});
+
 // Event-Listener wird ausgeführt, wenn das DOM vollständig geladen ist
 document.addEventListener('DOMContentLoaded', function () {
     // DOM-Elemente initialisieren

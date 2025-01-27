@@ -67,6 +67,9 @@ function muster() {
 }
 
 function refresh(data) {
+    data.sort(function (a, b) {
+        return b.amount - a.amount;
+    });
     var einzahlungTotal = 0;
     var auszahlungTotal = 0;
     var einzahlungHtml = '';
@@ -74,7 +77,7 @@ function refresh(data) {
     data.forEach(function (entry) {
         var listItem = '<li class="list-group-item d-flex justify-content-between">' +
             '<span>' + entry.name + '</span>' +
-            '<span>' + entry.amount.toFixed(2) + '€</span>' +
+            '<span>' + entry.amount.toFixed(2) + ' €</span>' +
             '</li>';
         if (entry.type === "Einnahme") {
             einzahlungHtml += listItem;
@@ -143,7 +146,7 @@ function chart(data) {
         data: {
             labels: ["Ausgaben", "Überschuss"],
             datasets: [{
-                backgroundColor: ["red", "yellow"],
+                backgroundColor: ["red", "green"],
                 data: [auszahlungenTotal, diff],
                 hoverOffset: 10
             }]
