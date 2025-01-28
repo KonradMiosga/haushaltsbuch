@@ -24,7 +24,7 @@ function loadEntries(token) {
             }
             console.log('Error: ' + xhr.status + ' ' + thrownError);
             console.log('Response:', xhr.responseText);
-            alert('Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler beim laden Ihrer Einträge.\nError: ' + xhr.status + ' ' + thrownError);
         }
     });
 }

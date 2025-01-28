@@ -47,7 +47,7 @@ $("#loginsubmit").click(function () {
             loginButton.disabled = false;
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Fehler bei der Anmeldung. Error: ' + xhr.status + '   ' + thrownError);
+            alert('Fehler bei der Anmeldung.\nError: ' + xhr.status + '   ' + thrownError);
             loginButton.disabled = false;
         }
     });
@@ -67,7 +67,7 @@ $("#logoutsubmit").click(function () {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             console.log('Error: ' + xhr.status + ' ' + thrownError);
-            alert('Fehler bei der Abmeldung. Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler bei der Abmeldung.\nError: ' + xhr.status + ' ' + thrownError);
         }
     });
 });
@@ -98,7 +98,7 @@ $("#savesubmit").click(function () {
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Fehler beim Speichern. Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler beim Speichern.\nError: ' + xhr.status + ' ' + thrownError);
         }
     });
 });
@@ -124,7 +124,7 @@ function refresh() {
             localStorage.removeItem('myToken');
             showLogin();
             console.log('Error: ' + xhr.status + ' ' + thrownError);
-            alert('Fehler beim Refresh der Daten. Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler beim Refresh der Daten.\nError: ' + xhr.status + ' ' + thrownError);
         }
     });
 }

@@ -35,7 +35,7 @@ $("#registersubmit").click(function (event) {
             window.location.href = 'profile.html';
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '   ' + thrownError);
+            alert('Fehler bei der Registrierung.\nbBitte überprüfen Sie Ihre eingegebenen Daten.\nError: ' + xhr.status + '   ' + thrownError);
         }
     });
 });

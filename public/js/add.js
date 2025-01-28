@@ -103,7 +103,7 @@ function refresh() {
             }
             console.log('Error: ' + xhr.status + ' ' + thrownError);
             console.log('Response:', xhr.responseText);
-            alert('Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler beim Datenabruf.\nError: ' + xhr.status + ' ' + thrownError);
         }
     });
 }
@@ -130,7 +130,7 @@ $("#deleteEntry").click(function () {
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + '   ' + thrownError);
+            alert('Fehler beim Löschen.\nError: ' + xhr.status + '   ' + thrownError);
         }
     });
 });
@@ -163,7 +163,7 @@ $("#addEntry").click(function () {
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Error: ' + xhr.status + ' ' + thrownError);
+            alert('Fehler beim Hinzufügen.\nError: ' + xhr.status + ' ' + thrownError);
         }
     });
 });
