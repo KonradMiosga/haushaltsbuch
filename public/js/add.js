@@ -10,10 +10,6 @@ $(document).ready(function () {
         span1.classList.remove("d-none");
         span2.classList.remove("d-none");
     }
-    else {
-        span1.classList.add("d-none");
-        span2.classList.add("d-none");
-    }
 });
 
 // Event-Listener wird ausgeführt, wenn das DOM vollständig geladen ist
