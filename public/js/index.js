@@ -141,15 +141,30 @@ function chart(data) {
         }
 
     });
-    new Chart("myChartRest", {
-        type: "pie",
-        data: {
-            labels: ["Ausgaben", "Überschuss"],
-            datasets: [{
-                backgroundColor: ["red", "green"],
-                data: [auszahlungenTotal, diff],
-                hoverOffset: 10
-            }]
-        }
-    });
+    if (diff < 0) {
+        new Chart("myChartRest", {
+            type: "pie",
+            data: {
+                labels: ["Schulden"],
+                datasets: [{
+                    backgroundColor: ["red"],
+                    data: [diff],
+                    hoverOffset: 10
+                }]
+            }
+        });
+    }else{
+        new Chart("myChartRest", {
+            type: "pie",
+            data: {
+                labels: ["Ausgaben", "Überschuss"],
+                datasets: [{
+                    backgroundColor: ["red", "green"],
+                    data: [auszahlungenTotal, diff],
+                    hoverOffset: 10
+                }]
+            }
+        });
+    }
+
 }

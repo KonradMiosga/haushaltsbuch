@@ -1,4 +1,6 @@
 import config from './config.js';
+const addButton = document.getElementById('addEntry');
+const deleteButton = document.getElementById('deleteEntry');
 
 $(document).ready(function () {
     var token = localStorage.getItem('myToken');
@@ -42,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Buttons initial deaktivieren
-    const addButton = document.getElementById('addEntry');
-    const deleteButton = document.getElementById('deleteEntry');
     addButton.disabled = true;
     deleteButton.disabled = true;
 
@@ -127,6 +127,7 @@ $("#deleteEntry").click(function () {
         contentType: "application/json; charset=UTF-8",
         success: function (data) {
             console.log(data);
+            deleteButton.disabled = true;
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -160,6 +161,11 @@ $("#addEntry").click(function () {
         contentType: "application/json; charset=UTF-8",
         success: function (data) {
             console.log(data);
+            $("#name").val('');
+            $("#amount").val('');
+            $("#type").val('');
+            $("#category").val('');
+            addButton.disabled = true;
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
