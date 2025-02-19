@@ -76,6 +76,8 @@ $("#logoutsubmit").click(function () {
         dataType: 'json',
         success: function (data) {
             localStorage.removeItem('myToken');
+            $("#loginName").val('');
+            $("#loginPassword").val('');
             showLogin();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -108,6 +110,7 @@ $("#savesubmit").click(function () {
         contentType: "application/json; charset=UTF-8",
         success: function (data) {
             console.log(data);
+            alert('Daten erfolgreich gespeichert.');
             refresh();
         },
         error: function (xhr, ajaxOptions, thrownError) {
