@@ -78,6 +78,7 @@ $("#logoutsubmit").click(function () {
             localStorage.removeItem('myToken');
             $("#loginName").val('');
             $("#loginPassword").val('');
+            loginButton.disabled = true;
             showLogin();
         },
         error: function (xhr, ajaxOptions, thrownError) {
