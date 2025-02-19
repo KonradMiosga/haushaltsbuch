@@ -132,7 +132,7 @@ function refresh() {
         success: function (data) {
             console.log("Empfangene Benutzerdaten:", data);
             // Formularfelder mit Benutzerdaten befüllen
-            $("#userName").val(data.email);           
+            $("#userName").text(data.email);           
             $("#userPassword").val(data.password);   
             $("#userFirstname").val(data.firstName);
             $("#userLastname").val(data.lastName);
