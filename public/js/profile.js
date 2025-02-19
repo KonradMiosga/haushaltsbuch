@@ -1,4 +1,18 @@
 import config from './config.js';
+const loginButton = document.getElementById("loginsubmit");
+
+[loginName, loginPassword].forEach(element => {
+    element.addEventListener('change', validateLogForm);
+    element.addEventListener('input', validateLogForm);
+});
+function validateLogForm() {
+    if (loginName.value === '' || loginPassword.value === '') {
+        loginButton.disabled = true;
+    } else {
+        loginButton.disabled = false;
+    }
+}
+
 
 // Seiten-Initialisierung
 $(document).ready(function () {
@@ -25,7 +39,6 @@ function showLogin() {
 
 // Event-Handler für Login
 $("#loginsubmit").click(function () {
-    const loginButton = document.getElementById("loginsubmit");
     loginButton.disabled = true;
     var login = {
         email: $("#loginName").val(),
@@ -86,7 +99,7 @@ $("#savesubmit").click(function () {
         }
     };
     $.ajax({
-        url: config.apiUrl + '/api/users',
+        url: config.apiUrl + '/users',
         type: 'put',
         dataType: 'json',
         contentType: 'application/json',

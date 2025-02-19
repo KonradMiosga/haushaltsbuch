@@ -1,7 +1,28 @@
 import config from './config.js';
+const regButton = document.getElementById('registersubmit');
+
+[registerVorname, registerNachname, registerEmail, registerPassword, registerRepeatPassword, registerCheck].forEach(element => {
+    element.addEventListener('change', validateRegForm);
+    element.addEventListener('input', validateRegForm);
+});
+
+function validateRegForm() {
+    if (registerPassword.value === '' 
+            || registerRepeatPassword.value === '' 
+            || registerCheck.checked === false 
+            || registerEmail.value === '' 
+            || registerVorname.value === '' 
+            || registerNachname.value === ''
+            || registerPassword.value !== registerRepeatPassword.value) {
+        regButton.disabled = true;
+    } else {
+        regButton.disabled = false;
+    }
+}
 
 // POST-Request für Registrierung, Auslöser ist der Klick auf den Registrieren-Button
 $("#registersubmit").click(function (event) {
+    regButton.disabled = true;
     event.preventDefault();
     var password = $("#registerPassword").val();
     var repeatPassword = $("#registerRepeatPassword").val();
@@ -35,7 +56,8 @@ $("#registersubmit").click(function (event) {
             window.location.href = 'profile.html';
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Fehler bei der Registrierung.\nbBitte überprüfen Sie Ihre eingegebenen Daten.\nError: ' + xhr.status + '   ' + thrownError);
+            alert('Fehler bei der Registrierung.\nBitte überprüfen Sie Ihre eingegebenen Daten.\nError: ' + xhr.status + '   ' + thrownError);
+            regButton.disabled = false;
         }
     });
 });
